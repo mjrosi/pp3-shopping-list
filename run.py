@@ -22,3 +22,9 @@ def display_list():
         print("* " + i)
 
 display_list()
+
+# Remove an item from the shopping list
+def remove_item():
+    item = input("Enter the item you wish to remove from the shopping list: ")
+    shopping_list.remove(item)
+    print(item + " has been removed from the shopping list.")
