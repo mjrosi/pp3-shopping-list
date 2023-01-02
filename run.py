@@ -27,7 +27,7 @@ display_list()
 def remove_item():
     item = input("Enter the item you wish to remove from the shopping list: ")
     shopping_list.remove(item)
-    print(item + " has been removed from the shopping list.")
+    print(item + "has been removed from the shopping list.")
 
 
 # Check to see if a particular item is on the shopping list
@@ -37,3 +37,14 @@ def check_item():
         print("Yes, " + item + " is on the shopping list.")
     else:
         print("No, " + item + " is not on the shopping list.")
+    input_other_item = input(f"Would you like to add {item} to the shopping list?\nType 'y' for yes or 'n' to not to add:\n")
+    if input_other_item == 'y':
+        shopping_list.append(item)
+        print(f"{item} has been added to the shopping list.")
+    else:
+        print(f"{item}has not been added to the shopping list.")
+    display_list()
+
+
+
+check_item()
