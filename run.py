@@ -1,3 +1,10 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+shopping_list = []
+
+# Adds an item to the shopping list
+
+def add_item():
+    item = input("Enter the item you wish to add to the shopping list: ")
+    shopping_list.append(item)
+    print(item + " has been added to the shopping list.")
+    
+add_item()
