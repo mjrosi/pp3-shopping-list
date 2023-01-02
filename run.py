@@ -28,3 +28,12 @@ def remove_item():
     item = input("Enter the item you wish to remove from the shopping list: ")
     shopping_list.remove(item)
     print(item + " has been removed from the shopping list.")
+
+
+# Check to see if a particular item is on the shopping list
+def check_item():
+    item = input("What item would you like to check on the shopping list: ")
+    if item in shopping_list:
+        print("Yes, " + item + " is on the shopping list.")
+    else:
+        print("No, " + item + " is not on the shopping list.")
