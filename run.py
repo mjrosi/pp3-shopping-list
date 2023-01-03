@@ -24,9 +24,9 @@ def add_item():
         else:
             print(f"{item.capitalize()} is already in the shopping list")
         user_input = input("""\nWould you like to add another item?\n
-Type 'c' to continue or 'q' to quit:\n""")
-        if user_input in ['c', 'q']:
-            if user_input == 'q':
+Type 'y' to add or 'n' to back to the main menu:\n""")
+        if user_input in ['y', 'n']:
+            if user_input == 'n':
                 stop = True
                 display_list()
                 time.sleep(2.5)
