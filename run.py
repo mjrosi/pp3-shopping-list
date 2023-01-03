@@ -1,3 +1,6 @@
+import sys
+
+
 shopping_list = []
 
 # Adds an item to the shopping list
@@ -67,6 +70,7 @@ def main():
         4. Check if item is on shopping list
         5. How many items on shopping list
         6. Clear shopping list
+        7. Exit
         ''')
 
         # Ask the user to make a selection
