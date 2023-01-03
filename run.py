@@ -16,44 +16,69 @@ def add_item():
     stop = False
     while not stop:
         item = input("Enter the item you wish to add to the shopping list: ")
-        shopping_list.append(item.capitalize())
-        print(f"{item} has been added to the shopping list.")
-        user_input = input("Would you like to add another item?\nType 'c' to continue or 'q' to quit:\n")
+        if item.capitalize() not in shopping_list:
+            shopping_list.append(item.capitalize())
+            print(f"{item.capitalize()} has been added to the shopping list.")
+        else:
+            print(f"{item.capitalize()} is already in the shopping list")
+       
+        user_input = input("\nWould you like to add another item?\nType 'c' to continue or 'q' to quit:\n")
         if user_input == 'q':
             stop = True
             display_list()
+        elif user_input == 'c':
+            stop = False
+        else:
+            print("Invalid input! Please try again.\n")
+            user_input = input("\nWould you like to add another item?\nType 'c' to continue or 'q' to quit:\n")
 
 
 # Displays all items on the shopping list
 def display_list():
+    """
+    Display added items to shopping list.
+    Run a if condition which if the list empty shows the the shopping list is
+    empty and asks user to add items by calling the function add_item().
+    If th list is not empty display the shopping list and calling
+    the main function for gives the user other option to select.
+    """
     if len(shopping_list) == 0:
-        print("The shopping list is empty")
+        print("The shopping list is empty.\n")
+        input_empty_list_item = input("Would you like to add an item to the shopping list?\nType 'y' for to add or 'n' to not to add:\n")
+        if input_empty_list_item == 'y':
+            add_item()
+            main()
+        else:
+            main()
     else:
-        print("--- SHOPPING LIST ---")
+        print("--- SHOPPING LIST ---\n")
         for i in shopping_list:
             print("* " + i)
+        print("\n---------------------")
+        main()
 
 
 # Remove an item from the shopping list
 def remove_item():
     item = input("Enter the item you wish to remove from the shopping list: ")
-    shopping_list.remove(item)
-    print(item + "has been removed from the shopping list.")
+    shopping_list.remove(item.capitalize())
+    print(f"{item.capitalize()} has been removed from the shopping list.\n")
+    display_list()
 
 
 # Check to see if a particular item is on the shopping list
 def check_item():
     item = input("What item would you like to check on the shopping list: ")
-    if item in shopping_list:
-        print("Yes, " + item + " is on the shopping list.")
+    if item.capitalize() in shopping_list:
+        print(f"Yes, {item.capitalize()} is on the shopping list.")
     else:
-        print("No, " + item + " is not on the shopping list.")
-        input_other_item = input(f"Would you like to add {item} to the shopping list?\nType 'y' for yes or 'n' to not to add:\n")
+        print(f"No, {item.capitalize()} is not on the shopping list.")
+        input_other_item = input(f"Would you like to add {item.capitalize()} to the shopping list?\nType 'y' for to add or 'n' to not to add:\n")
         if input_other_item == 'y':
             shopping_list.append(item)
-            print(f"{item} has been added to the shopping list.")
+            print(f"{item.capitalize()} has been added to the shopping list.")
         else:
-            print(f"{item} has not been added to the shopping list.")
+            print(f"{item.capitalize()} has not been added to the shopping list.")
     display_list()
 
 
@@ -70,7 +95,7 @@ def clear_shopping_list():
 
 
 def main():
-    print('''### SHOPPING LIST ###
+    print('''### WELCOME TO SHOOD SHOPPING LIST GENERATOR###
 
         Select a number for the action that you would like to do:
 
@@ -100,10 +125,12 @@ def main():
     elif selection == "6":
         clear_shopping_list()
     elif selection == "7":
+        print('Thanks for using SHOOD shopping list generator!')
         sys.exit()
     else:
-        print("You did not make a valid selection.")
+        print("You did not make a valid selection. Please try again.")
+        main()
 
 
-# Run the function mainMenu - which will run our app
+# Run the function main - which will run the program
 main()
