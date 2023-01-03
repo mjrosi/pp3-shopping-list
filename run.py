@@ -7,11 +7,11 @@ def add_item():
     while not stop:
         item = input("Enter the item you wish to add to the shopping list: ")
         shopping_list.append(item)
-        print(item + " has been added to the shopping list.")
-        user_input = input("Would you like to enter another item?\nType 'c' for continue or 'q' to quit:\n")
+        print(f"{item} has been added to the shopping list.")
+        user_input = input("Would you like to add another item?\nType 'c' to continue or 'q' to quit:\n")
         if user_input == 'q':
             stop = True
-    
+
 add_item()
 
 # Displays all items on the shopping list
@@ -37,14 +37,20 @@ def check_item():
         print("Yes, " + item + " is on the shopping list.")
     else:
         print("No, " + item + " is not on the shopping list.")
-    input_other_item = input(f"Would you like to add {item} to the shopping list?\nType 'y' for yes or 'n' to not to add:\n")
-    if input_other_item == 'y':
-        shopping_list.append(item)
-        print(f"{item} has been added to the shopping list.")
-    else:
-        print(f"{item}has not been added to the shopping list.")
+        input_other_item = input(f"Would you like to add {item} to the shopping list?\nType 'y' for yes or 'n' to not to add:\n")
+        if input_other_item == 'y':
+            shopping_list.append(item)
+            print(f"{item} has been added to the shopping list.")
+        else:
+            print(f"{item} has not been added to the shopping list.")
     display_list()
+
+# How many items are on the shopping list        
+def shopping_list_length():
+    number_of_items = len(shopping_list)
+    print(f"There are {number_of_items} items on the shopping list.")
 
 
 
 check_item()
+shopping_list_length()
