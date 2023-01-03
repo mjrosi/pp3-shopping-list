@@ -1,9 +1,5 @@
-
-import sys
-import time
-"""
-Import sys library for importing sys.exit().
-"""
+import sys  # for importing sys.exit() function.
+import time  # for importing sys.exit() function.
 
 
 shopping_list = []
@@ -20,24 +16,26 @@ def add_item():
     """
     stop = False
     while not stop:
-        item = input("Enter the item you wish to add to the shopping list: ")
+        item = input("Enter the item you wish to add to the shopping list: \n")
         if item.capitalize() not in shopping_list:
             shopping_list.append(item.capitalize())
             print(f"{item.capitalize()} has been added to the shopping list.")
+            time.sleep(2.5)
         else:
             print(f"{item.capitalize()} is already in the shopping list")
         user_input = input("""\nWould you like to add another item?\n
-        Type 'c' to continue or 'q' to quit:\n""")
+Type 'c' to continue or 'q' to quit:\n""")
         if user_input in ['c', 'q']:
             if user_input == 'q':
                 stop = True
                 display_list()
+                time.sleep(2.5)
             else:
                 stop = False
         else:
             print("Invalid input! Please try again.\n")
             user_input = input("""\nWould you like to add another item?\n
-            Type 'c' to continue or 'q' to quit:\n""")
+Type 'c' to continue or 'q' to quit:\n""")
 
 
 # Displays all items on the shopping list
@@ -52,13 +50,14 @@ def display_list():
     if len(shopping_list) == 0:
         print("The shopping list is empty.\n")
         input_empty_list_item = input("""Would you like to add an item to
-        the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
+the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
         if input_empty_list_item == 'y':
             add_item()
             main()
         else:
             main()
     else:
+        time.sleep(2.5)
         print("--- SHOPPING LIST ---\n")
         for i in shopping_list:
             print("* " + i)
@@ -68,52 +67,73 @@ def display_list():
 
 # Remove an item from the shopping list
 def remove_item():
+    """
+    Removes item from the shopping list by requesting
+    the user to enter the item name.
+    If the items is not in the shopping list raise an error
+    and asks the user to try again
+    """
     while True:
         item = input("""Enter the item you wish
-        to remove from the shopping list:""")
+to remove from the shopping list:""")
         if item.capitalize() in shopping_list:
             shopping_list.remove(item.capitalize())
             print(f"""{item.capitalize()} has been removed from
-            the shopping list.\n""")
+the shopping list.\n""")
             time.sleep(2.5)
             display_list()
             break
         else:
             print(f"""{item.capitalize()} is not in the shopping list. Please
-            try again.\n""")
+try again.\n""")
 
 
 # Check to see if a particular item is on the shopping list
 def check_item():
+    """
+    Requests user to enter an item to check if the item
+    is in the shopping list.
+    If user enters an item which is not in the list, asks
+    if the user wants to add the item to the list.
+    """
     item = input("What item would you like to check on the shopping list: ")
     if item.capitalize() in shopping_list:
-        print(f"Yes, {item.capitalize()} is on the shopping list.")
+        print(f"Yes, {item.capitalize()} is on the shopping list.\n")
     else:
         print(f"No, {item.capitalize()} is not on the shopping list.")
         input_other_item = input(f"""Would you like to add {item.capitalize()}
-        to the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
+to the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
         if input_other_item == 'y':
             shopping_list.append(item.capitalize())
             print(f"{item.capitalize()} has been added to the shopping list.")
         else:
             print(f"""{item.capitalize()} has not been added to
-            the shopping list.""")
+the shopping list.""")
     display_list()
 
 
 # How many items are on the shopping list
 def shopping_list_length():
+    """
+    Shows the numbers of the items in the shopping list.
+    """
     number_of_items = len(shopping_list)
     print(f"There are {number_of_items} items on the shopping list.")
 
 
 # Remove everything from the shopping list
 def clear_shopping_list():
+    """
+    Clears the entire items in the shopping list.
+    """
     shopping_list.clear()
     print("The shopping list is now empty.")
 
 
 def main():
+    """
+    The main function which runs the program.
+    """
     print('''### WELCOME TO SHOOD SHOPPING LIST GENERATOR###
 
         Select a number for the action that you would like to do:
@@ -131,7 +151,7 @@ def main():
     while True:
         try:
             selection = int(input("""Make a selection by choosing a number
-            from 1-7: """))
+from 1-7: """))
         except ValueError:
             print("Invalid entry! Please choose a number from 1-7.\n")
             continue
@@ -153,7 +173,6 @@ def main():
             sys.exit()
         else:
             print("You did not make a valid selection. Please try again.\n")
-            main()
 
 
 if __name__ == "__main__":
