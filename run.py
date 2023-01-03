@@ -1,4 +1,7 @@
 import sys
+"""
+Import sys library for importing sys.exit().
+"""
 
 
 shopping_list = []
@@ -60,10 +63,15 @@ def display_list():
 
 # Remove an item from the shopping list
 def remove_item():
-    item = input("Enter the item you wish to remove from the shopping list: ")
-    shopping_list.remove(item.capitalize())
-    print(f"{item.capitalize()} has been removed from the shopping list.\n")
-    display_list()
+    while True:
+        item = input("Enter the item you wish to remove from the shopping list:")
+        if item.capitalize() in shopping_list:
+            shopping_list.remove(item.capitalize())
+            print(f"{item.capitalize()} has been removed from the shopping list.\n")
+            display_list()
+            break
+        else:
+            print(f"{item.capitalize()} is not in the shopping list. Please try again.\n")
 
 
 # Check to see if a particular item is on the shopping list
@@ -109,27 +117,31 @@ def main():
         ''')
 
     # Ask the user to make a selection
-    selection = input("Make your selection: ")
-
-    # Determine which action to perform based on the user's selection
-    if selection == "1":
-        add_item()
-    elif selection == "2":
-        display_list()
-    elif selection == "3":
-        remove_item()
-    elif selection == "4":
-        check_item()
-    elif selection == "5":
-        shopping_list_length()
-    elif selection == "6":
-        clear_shopping_list()
-    elif selection == "7":
-        print('Thanks for using SHOOD shopping list generator!')
-        sys.exit()
-    else:
-        print("You did not make a valid selection. Please try again.")
-        main()
+    while True:
+        try:
+            selection = int(input("Make a selection by choosing a number from 1-7: "))
+        except ValueError:
+            print("Invalid entry! Please enter a valid number from 1-7.\n")
+            continue
+        # Determine which action to perform based on the user's selection
+        if selection == 1:
+            add_item()
+        elif selection == 2:
+            display_list()
+        elif selection == 3:
+            remove_item()
+        elif selection == 4:
+            check_item()
+        elif selection == 5:
+            shopping_list_length()
+        elif selection == 6:
+            clear_shopping_list()
+        elif selection == 7:
+            print('Thanks for using SHOOD shopping list generator!\n')
+            sys.exit()
+        else:
+            print("You did not make a valid selection. Please try again.\n")
+            main()
 
 
 # Run the function main - which will run the program
