@@ -1,4 +1,6 @@
+
 import sys
+import time
 """
 Import sys library for importing sys.exit().
 """
@@ -24,16 +26,18 @@ def add_item():
             print(f"{item.capitalize()} has been added to the shopping list.")
         else:
             print(f"{item.capitalize()} is already in the shopping list")
-       
-        user_input = input("\nWould you like to add another item?\nType 'c' to continue or 'q' to quit:\n")
-        if user_input == 'q':
-            stop = True
-            display_list()
-        elif user_input == 'c':
-            stop = False
+        user_input = input("""\nWould you like to add another item?\n
+        Type 'c' to continue or 'q' to quit:\n""")
+        if user_input in ['c', 'q']:
+            if user_input == 'q':
+                stop = True
+                display_list()
+            else:
+                stop = False
         else:
             print("Invalid input! Please try again.\n")
-            user_input = input("\nWould you like to add another item?\nType 'c' to continue or 'q' to quit:\n")
+            user_input = input("""\nWould you like to add another item?\n
+            Type 'c' to continue or 'q' to quit:\n""")
 
 
 # Displays all items on the shopping list
@@ -47,7 +51,8 @@ def display_list():
     """
     if len(shopping_list) == 0:
         print("The shopping list is empty.\n")
-        input_empty_list_item = input("Would you like to add an item to the shopping list?\nType 'y' for to add or 'n' to not to add:\n")
+        input_empty_list_item = input("""Would you like to add an item to
+        the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
         if input_empty_list_item == 'y':
             add_item()
             main()
@@ -64,14 +69,18 @@ def display_list():
 # Remove an item from the shopping list
 def remove_item():
     while True:
-        item = input("Enter the item you wish to remove from the shopping list:")
+        item = input("""Enter the item you wish
+        to remove from the shopping list:""")
         if item.capitalize() in shopping_list:
             shopping_list.remove(item.capitalize())
-            print(f"{item.capitalize()} has been removed from the shopping list.\n")
+            print(f"""{item.capitalize()} has been removed from
+            the shopping list.\n""")
+            time.sleep(2.5)
             display_list()
             break
         else:
-            print(f"{item.capitalize()} is not in the shopping list. Please try again.\n")
+            print(f"""{item.capitalize()} is not in the shopping list. Please
+            try again.\n""")
 
 
 # Check to see if a particular item is on the shopping list
@@ -81,12 +90,14 @@ def check_item():
         print(f"Yes, {item.capitalize()} is on the shopping list.")
     else:
         print(f"No, {item.capitalize()} is not on the shopping list.")
-        input_other_item = input(f"Would you like to add {item.capitalize()} to the shopping list?\nType 'y' for to add or 'n' to not to add:\n")
+        input_other_item = input(f"""Would you like to add {item.capitalize()}
+        to the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
         if input_other_item == 'y':
-            shopping_list.append(item)
+            shopping_list.append(item.capitalize())
             print(f"{item.capitalize()} has been added to the shopping list.")
         else:
-            print(f"{item.capitalize()} has not been added to the shopping list.")
+            print(f"""{item.capitalize()} has not been added to
+            the shopping list.""")
     display_list()
 
 
@@ -119,9 +130,10 @@ def main():
     # Ask the user to make a selection
     while True:
         try:
-            selection = int(input("Make a selection by choosing a number from 1-7: "))
+            selection = int(input("""Make a selection by choosing a number
+            from 1-7: """))
         except ValueError:
-            print("Invalid entry! Please enter a valid number from 1-7.\n")
+            print("Invalid entry! Please choose a number from 1-7.\n")
             continue
         # Determine which action to perform based on the user's selection
         if selection == 1:
@@ -144,5 +156,6 @@ def main():
             main()
 
 
-# Run the function main - which will run the program
-main()
+if __name__ == "__main__":
+    # Run the function main - which will run the program
+    main()
