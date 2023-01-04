@@ -1,10 +1,9 @@
 # SHOOD shopping list generator
+[Live webpage](https://pp3-shopping-list.herokuapp.com/)
 
 SHOOD shopping list generator is a program for creating a shopping list. By this program is possible to add, remove, display the items in shopping list. Also the program allows the user to choose if they want to know if a specific item is in the list. Moreover, program shows the number of items in shopping list and has an option to clear all the items in the list.
 
 ![Start screen](/assets/screenshots/Screenshot_shoppinglist_app.jpg)
-
-[Live webpage](https://pp3-shopping-list.herokuapp.com/)
 
 ## Table of Content
 
@@ -128,5 +127,4 @@ Use the following steps to deploy the poject to Heroku:
 ### Code
 - Code Institute Python lessons.
 - Code Institute Love Sandwiches project.
-- for importing sys.exit() function. For importing sys.exit() function the code is taken from https://www.geeksforgeeks.org/python-exit-
-    commands-quit-exit-sys-exit-and-os-_exit/.
+- for importing sys.exit() function. For importing sys.exit() function the code is taken from [here.](https://www.geeksforgeeks.org/python-exit-commands-quit-exit-sys-exit-and-os-_exit/)
