@@ -1,8 +1,8 @@
-# Battleships
+# SHOOD shopping list generator
 
 SHOOD shopping list generator is a program for creating a shopping list. By this program is possible to add, remove, display the items in shopping list. Also the program allows the user to choose if they want to know if a specific item is in the list. Moreover, program shows the number of items in shopping list and has an option to clear all the items in the list.
 
-![Start screen](/Screenshot_shoppinglist_app.jpg)
+![Start screen](/assets/screenshots/Screenshot_shoppinglist_app.jpg)
 
 [Live webpage](https://pp3-shopping-list.herokuapp.com/)
 
@@ -57,7 +57,7 @@ The application user wants to creat a shopping list by adding item to the list a
 
 ### Welcome Message
 - Shows the main menu with 7 options for the user to choose.
-pic ?
+[Start screen](/assets/screenshots/Screenshot_shoppinglist_app.jpg)
 
 ### Add Items Input
 - Prompts a user to input a number beteen 1 to 7.
@@ -65,38 +65,40 @@ pic ?
 - After adding an item, user can continue add items by choosing y.
 - User can stop adding items to the list by choosing q.
 - By choosing q, programs will display the shopping list and the main menu.
-
-pic ?
+[Add Items](/assets/screenshots/Screenshot_add_item_function.png)
 
 ### View Shopping List 
 - By choosing 2, the program displays added items in the shopping list.
 - If the list is empty it shows the the shopping list is empty and asks user if they want to add items.
 - If the list is not empty it displays the shopping list and shows the main menu to give the user other option to select.
-pic?
+[View Shopping List](/assets/screenshots/Screenshot_view_shopping_list.png)
+[View Shopping List if empty](/assets/screenshots/Screenshot_View_Shopping_List_empty.png)
 
 ### Remove item from shopping list
 - By choosing 3, the program removes item from the shopping list by requesting the user to enter the item name.
 - After removing the item, the programs displays the shopping list and the main menu.
 - If the item is not in the shopping list raise an error and asks the user to try again.
-
-pic?
+[Remove Items](/assets/screenshots/Screenshot_remove_items.png)
+[Remove Items not in the List](/assets/screenshots/Screenshot_remove_items_not_in_the_list.png)
 
 ### Check if item is on shopping list
-- Allows the user to enter an item to check if the item is in the shopping list.
+- By choosing 4, the program allows the user to enter an item to check if the item is in the shopping list.
 - If user enters an item which is not in the list, the program asks if the user wants to add the item to the list.
-
-
-pic?
+[Check Items](/assets/screenshots/Screenshot_check_item.png)
 
 ### How many items on shopping list
-- Shows the numbers of the items in the shopping list.
-
-pic?
+- SBy choosing 5, the program shows the numbers of the items in the shopping list.
+[Number of Items](/assets/screenshots/Screenshot_number_of_items.png)
 
 ### Clear shopping list
-- Clears the entire items in the shopping list.
+- By choosing 6, the program clears the entire items in the shopping list.
+[Clear the List](/assets/screenshots/Screenshot_clear_list.png)
 
-## Validation
+### Exit
+- By choosing 7, user exits the program.
+[Exit the Program](/assets/screenshots/Screenshot_exit.png)
+
+## Validator testing
 
 ### PEP8 validation
 The code is checked in [pep8](https://pep8ci.herokuapp.com/).
