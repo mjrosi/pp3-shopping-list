@@ -1,31 +1,122 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleships
 
-Welcome mjrosi,
+SHOOD shopping list generator is a program for creating a shopping list. By this program is possible to add, remove, display the items in shopping list. Also the program allows the user to choose if they want to know if a specific item is in the list. Moreover, program shows the number of items in shopping list and has an option to clear all the items in the list.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+![Start screen](/Screenshot_shoppinglist_app.jpg)
 
-## Reminders
+[Live webpage](https://pp3-shopping-list.herokuapp.com/)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## Table of Content
 
-## Creating the Heroku app
+1. [Project Goals](#project-goals)
+    1. [User Goals](#user-goals)
+2. [User Experience](#user-experience)
+    1. [Target Audience](#target-audience)
+3. [Technical Design](#technical-design)
+    1. [Flowchart](#flowchart)
+4. [Technologies Used](#technologies-used)
+    1. [Languages](#languages)
+    2. [Frameworks & Tools](#frameworks-&-tools)
+5. [Features](#features)
+6. [Testing](#validation)
+    1. [PEP8 validation](#pep8-validation)
+7. [Deployment](#deployment)
+8. [Credits](#credits)
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Project Goals 
+The project goal is to create a shopping list generator using Python. The program can add, remove, edit items in a shopping list.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### User Goals
+The application user wants to creat a shopping list by adding item to the list and/or removing items from the list. Showing a specific item in the list and the number of items in the list are other features of the program that user can use. User can empty the whole list.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## User Experience
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### Target Audience
+- Users that are inerested in a program for creating a shopping list for them.
 
-Connect your GitHub repository and deploy as normal.
+## Technical Design
 
-## Constraints
+### Flowchart
+?
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
------
-Happy coding!
+
+## Technologies Used
+
+### Languages
+- Python 3
+
+### Frameworks & Tools
+- Heroku
+- pep8
+- gitHub
+- Gitpod
+- Git
+
+## Features
+
+### Welcome Message
+- Shows the main menu with 7 options for the user to choose.
+pic ?
+
+### Add Items Input
+- Prompts a user to input a number beteen 1 to 7.
+- By choosing 1, user can add items to the list.
+- After adding an item, user can continue add items by choosing y.
+- User can stop adding items to the list by choosing q.
+- By choosing q, programs will display the shopping list and the main menu.
+
+pic ?
+
+### View Shopping List 
+- By choosing 2, the program displays added items in the shopping list.
+- If the list is empty it shows the the shopping list is empty and asks user if they want to add items.
+- If the list is not empty it displays the shopping list and shows the main menu to give the user other option to select.
+pic?
+
+### Remove item from shopping list
+- By choosing 3, the program removes item from the shopping list by requesting the user to enter the item name.
+- After removing the item, the programs displays the shopping list and the main menu.
+- If the item is not in the shopping list raise an error and asks the user to try again.
+
+pic?
+
+### Check if item is on shopping list
+- Allows the user to enter an item to check if the item is in the shopping list.
+- If user enters an item which is not in the list, the program asks if the user wants to add the item to the list.
+
+
+pic?
+
+### How many items on shopping list
+- Shows the numbers of the items in the shopping list.
+
+pic?
+
+### Clear shopping list
+- Clears the entire items in the shopping list.
+
+## Validation
+
+### PEP8 validation
+The code is checked in [pep8](https://pep8ci.herokuapp.com/).
+No error has found.
+
+## Deployment
+Use the following steps to deploy the poject to Heroku:
+1. Login or create a Heroku account.
+2. Click the "New" button in the upper right corner and select "Create New App".
+3. Choose an app name and your region and click "Create App". Note: the app name must be unique.
+4. Go to the "Settings" tab, add the python build pack and then the node.js build pack. This is to ensure the project functions correctly with the Code Institute pre-installed template.
+5. Go to the "Deploy" tab and pick GitHub as a deployment method.
+6. Search for a repository to connect to.
+7. Click enable automatic deploys and then deploy branch.
+8. Wait for the app to build and then click on the "View" link.
+
+## Credits
+
+### Code
+- Code Institute Python lessons.
+- Code Institute Love Sandwiches project.
+- for importing sys.exit() function. For importing sys.exit() function the code is taken from https://www.geeksforgeeks.org/python-exit-
+    commands-quit-exit-sys-exit-and-os-_exit/.

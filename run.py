@@ -1,4 +1,9 @@
-import sys  # for importing sys.exit() function.
+import sys
+"""
+    code is taken from https://www.geeksforgeeks.org/python-exit-
+    commands-quit-exit-sys-exit-and-os-_exit/.
+    for importing sys.exit() function.
+"""
 import time  # for importing sys.exit() function.
 
 
@@ -41,11 +46,11 @@ Type 'c' to continue or 'q' to quit:\n""")
 # Displays all items on the shopping list
 def display_list():
     """
-    Display added items to shopping list.
-    Run a if condition which if the list empty shows the the shopping list is
+    Displays added items in the shopping list.
+    Runs an if condition which if the list empty shows the the shopping list is
     empty and asks user to add items by calling the function add_item().
-    If th list is not empty display the shopping list and calling
-    the main function for gives the user other option to select.
+    If the list is not empty display the shopping list and calling
+    the main function to give the user other option to select.
     """
     if len(shopping_list) == 0:
         print("The shopping list is empty.\n")
@@ -57,11 +62,11 @@ the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
         else:
             main()
     else:
-        time.sleep(2.5)
         print("--- SHOPPING LIST ---\n")
         for i in shopping_list:
             print("* " + i)
         print("\n---------------------")
+        time.sleep(2.5)
         main()
 
 
@@ -70,8 +75,8 @@ def remove_item():
     """
     Removes item from the shopping list by requesting
     the user to enter the item name.
-    If the items is not in the shopping list raise an error
-    and asks the user to try again
+    If the item is not in the shopping list raise an error
+    and asks the user to try again.
     """
     while True:
         item = input("""Enter the item you wish
