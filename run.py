@@ -1,3 +1,5 @@
+import gspread
+from google.oauth2.service_account import Credentials
 import sys
 """
     code is taken from https://www.geeksforgeeks.org/python-exit-
@@ -5,9 +7,6 @@ import sys
     for importing sys.exit() function.
 """
 import time  # for importing sys.exit() function.
-
-
-shopping_list = []
 
 
 # Adds an item to the shopping list
@@ -24,6 +23,7 @@ def add_item():
         item = input("Enter the item you wish to add to the shopping list: \n")
         if item.capitalize() not in shopping_list:
             shopping_list.append(item.capitalize())
+            list.append_row([item.capitalize()])
             print(f"{item.capitalize()} has been added to the shopping list.")
             time.sleep(2.5)
         else:
@@ -82,7 +82,10 @@ def remove_item():
         item = input("""Enter the item you wish
 to remove from the shopping list:""")
         if item.capitalize() in shopping_list:
+            list.delete_rows(2, len(shopping_list) + 1)
             shopping_list.remove(item.capitalize())
+            for shopping_item in shopping_list:
+                list.append_row([shopping_item])
             print(f"""{item.capitalize()} has been removed from
 the shopping list.\n""")
             time.sleep(2.5)
@@ -110,6 +113,7 @@ def check_item():
 to the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
         if input_other_item == 'y':
             shopping_list.append(item.capitalize())
+            list.append_row([item.capitalize()])
             print(f"{item.capitalize()} has been added to the shopping list.")
         else:
             print(f"""{item.capitalize()} has not been added to
@@ -131,6 +135,7 @@ def clear_shopping_list():
     """
     Clears the entire items in the shopping list.
     """
+    list.delete_rows(2, len(shopping_list) + 1)
     shopping_list.clear()
     print("The shopping list is now empty.")
 
@@ -140,9 +145,7 @@ def main():
     The main function which runs the program.
     """
     print('''### WELCOME TO SHOOD SHOPPING LIST GENERATOR###
-
         Select a number for the action that you would like to do:
-
         1. Add item to shopping list
         2. View shopping list
         3. Remove item from shopping list
@@ -181,5 +184,18 @@ from 1-7: """))
 
 
 if __name__ == "__main__":
+    SCOPE = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.file",
+        "https://www.googleapis.com/auth/drive"
+        ]
+
+    CREDS = Credentials.from_service_account_file('creds.json')
+    SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+    GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+    SHEET = GSPREAD_CLIENT.open('shopping_list')
+    list = SHEET.worksheet('list')
+    data = list.get_all_values()[1:]
+    shopping_list = [str(x[0]) for x in data]
     # Run the function main - which will run the program
     main()
