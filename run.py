@@ -22,7 +22,7 @@ def add_item():
     while not stop:
         while True:
             item = input("Enter the item you wish to add to the shopping list: \n")
-            if not item.isalpha():
+            if not all(x.isalpha() or x.isspace() for x in item):
                 print('Invalid Entry! Please enter only letters, like: eggs\n')
                 continue
             else:
@@ -112,10 +112,10 @@ def check_item():
     """
     while True:
         item = input("What item would you like to check on the shopping list: ")
-        if not item.isalpha():
+        if not all(x.isalpha() or x.isspace() for x in item):
             print('\nInvalid Entry! Please enter only letters, like eggs.\n')
             continue
-        elif item.capitalize() in shopping_list and item.isalpha():
+        elif item.capitalize() in shopping_list and all(x.isalpha() or x.isspace() for x in item):
             print(f"\nYes, {item.capitalize()} is on the shopping list.\n")
             time.sleep(2)
             display_list()
