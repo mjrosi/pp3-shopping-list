@@ -40,7 +40,7 @@ def add_item():
             # (https://tutorial.eyehunts.com/python/while-loop-yes-or-no-python-example-code/)
             while user_input not in ("y", "n"):
                 user_input = input("""\nWould you like to add another item?\n
-Type 'y' to add or 'n' to back to the main menu:\n""")
+Type 'y' to add or 'n' to back to the main menu: \n""")
                 if user_input == 'n':
                     stop = True
                     display_list()
@@ -63,7 +63,7 @@ def display_list():
     if len(shopping_list) == 0:
         print("The shopping list is empty.\n")
         input_empty_list_item = input("""Would you like to add an item to
-the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
+the shopping list?\nType 'y' for to add or 'n' to not to add: \n""")
         if input_empty_list_item == 'y':
             add_item()
             main()
@@ -88,7 +88,7 @@ def remove_item():
     """
     while True:
         item = input("""Enter the item you wish
-to remove from the shopping list:""")
+to remove from the shopping list: """)
         if item.capitalize() in shopping_list:
             list.delete_rows(2, len(shopping_list) + 1)
             shopping_list.remove(item.capitalize())
@@ -102,8 +102,7 @@ the shopping list.\n""")
             display_list()
             break
         else:
-            print(f"""\n{item.capitalize()} is not in the shopping list. Please
-try again.\n""")
+            print("\nInvalid Entry! Please try again.\n")
 
 
 # Check to see if a particular item is on the shopping list
@@ -128,7 +127,7 @@ def check_item():
         answer = None
         while answer not in ("y", "n"):
             answer = input(f"""Would you like to add {item.capitalize()}
-to the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
+to the shopping list?\nType 'y' for to add or 'n' to not to add: \n""")
             if answer == 'y':
                 shopping_list.append(item.capitalize())
                 list.append_row([item.capitalize()])
@@ -204,7 +203,9 @@ from 1-7: """))
         elif selection == 6:
             clear_shopping_list()
         elif selection == 7:
-            print('Thanks for using SHOOD shopping list generator!\n')
+            print('Exiting...')
+            time.sleep(2)
+            print('\nThanks for using SHOOD shopping list generator!\n')
             sys.exit()
         else:
             print("You did not make a valid selection. Please try again.\n")
