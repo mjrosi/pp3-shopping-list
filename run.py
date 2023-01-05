@@ -33,7 +33,7 @@ def add_item():
                     time.sleep(2.5)
                 else:
                     print(f"{item.capitalize()} is already in the shopping list")
-            user_input = None   
+            user_input = None 
             while user_input not in ("y", "n"):
                 user_input = input("""\nWould you like to add another item?\n
 Type 'y' to add or 'n' to back to the main menu:\n""")
@@ -90,13 +90,15 @@ to remove from the shopping list:""")
             shopping_list.remove(item.capitalize())
             for shopping_item in shopping_list:
                 list.append_row([shopping_item])
-            print(f"""{item.capitalize()} has been removed from
+            print('\nRemoving the item ...')
+            time.sleep(2)
+            print(f"""\n{item.capitalize()} has been removed from
 the shopping list.\n""")
             time.sleep(2.5)
             display_list()
             break
         else:
-            print(f"""{item.capitalize()} is not in the shopping list. Please
+            print(f"""\n{item.capitalize()} is not in the shopping list. Please
 try again.\n""")
 
 
@@ -108,21 +110,35 @@ def check_item():
     If user enters an item which is not in the list, asks
     if the user wants to add the item to the list.
     """
-    item = input("What item would you like to check on the shopping list: ")
-    if item.capitalize() in shopping_list:
-        print(f"Yes, {item.capitalize()} is on the shopping list.\n")
-    else:
-        print(f"No, {item.capitalize()} is not on the shopping list.")
-        input_other_item = input(f"""Would you like to add {item.capitalize()}
-to the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
-        if input_other_item == 'y':
-            shopping_list.append(item.capitalize())
-            list.append_row([item.capitalize()])
-            print(f"{item.capitalize()} has been added to the shopping list.")
+    while True:
+        item = input("What item would you like to check on the shopping list: ")
+        if not item.isalpha():
+            print('\nInvalid Entry! Please enter only letters, like eggs.\n')
+            continue
+        elif item.capitalize() in shopping_list and item.isalpha():
+            print(f"\nYes, {item.capitalize()} is on the shopping list.\n")
+            time.sleep(2)
+            display_list()
         else:
-            print(f"""{item.capitalize()} has not been added to
-the shopping list.""")
-    display_list()
+            print(f"\nNo, {item.capitalize()} is not on the shopping list.\n")
+        answer = None
+        while answer not in ("y", "n"):
+            answer = input(f"""Would you like to add {item.capitalize()}
+to the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
+            if answer == 'y':
+                shopping_list.append(item.capitalize())
+                list.append_row([item.capitalize()])
+                print(f"\n{item.capitalize()} has been added to the shopping list.")
+                time.sleep(2.5)
+                display_list()
+                return False
+            elif answer == 'n':
+                print(f"""\n{item.capitalize()} has not been added to
+the shopping list.\n""")
+                display_list()
+                return False
+            else:
+                print("Invalid input! Please enter y or n.\n")
 
 
 # How many items are on the shopping list
@@ -131,7 +147,8 @@ def shopping_list_length():
     Shows the numbers of the items in the shopping list.
     """
     number_of_items = len(shopping_list)
-    print(f"There are {number_of_items} items on the shopping list.")
+    print(f"\nThere are {number_of_items} items on the shopping list.\n")
+    display_list()
 
 
 # Remove everything from the shopping list
