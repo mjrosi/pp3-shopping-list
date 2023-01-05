@@ -20,27 +20,31 @@ def add_item():
     """
     stop = False
     while not stop:
-        item = input("Enter the item you wish to add to the shopping list: \n")
-        if item.capitalize() not in shopping_list:
-            shopping_list.append(item.capitalize())
-            list.append_row([item.capitalize()])
-            print(f"{item.capitalize()} has been added to the shopping list.")
-            time.sleep(2.5)
-        else:
-            print(f"{item.capitalize()} is already in the shopping list")
-        user_input = input("""\nWould you like to add another item?\n
-Type 'y' to add or 'n' to back to the main menu:\n""")
-        if user_input in ['y', 'n']:
-            if user_input == 'n':
-                stop = True
-                display_list()
-                time.sleep(2.5)
+        while True:
+            item = input("Enter the item you wish to add to the shopping list: \n")
+            if not item.isalpha():
+                print('Invalid Entry! Please enter only letters, like: eggs\n')
+                continue
             else:
-                stop = False
-        else:
-            print("Invalid input! Please try again.\n")
-            user_input = input("""\nWould you like to add another item?\n
-Type 'c' to continue or 'q' to quit:\n""")
+                if item.capitalize() not in shopping_list:
+                    shopping_list.append(item.capitalize())
+                    list.append_row([item.capitalize()])
+                    print(f"\n{item.capitalize()} has been added to the shopping list.")
+                    time.sleep(2.5)
+                else:
+                    print(f"{item.capitalize()} is already in the shopping list")
+            user_input = None   
+            while user_input not in ("y", "n"):
+                user_input = input("""\nWould you like to add another item?\n
+Type 'y' to add or 'n' to back to the main menu:\n""")
+                if user_input == 'n':
+                    stop = True
+                    display_list()
+                    time.sleep(2.5)
+                elif user_input == 'y':
+                    stop = False
+                else:
+                    print("Invalid input! Please try again.\n")
 
 
 # Displays all items on the shopping list
@@ -145,7 +149,9 @@ def main():
     The main function which runs the program.
     """
     print('''### WELCOME TO SHOOD SHOPPING LIST GENERATOR###
+
         Select a number for the action that you would like to do:
+
         1. Add item to shopping list
         2. View shopping list
         3. Remove item from shopping list
