@@ -22,6 +22,8 @@ def add_item():
     while not stop:
         while True:
             item = input("Enter the item you wish to add to the shopping list: \n")
+            # Check if string contains only Letters and Spaces from:
+            # https://bobbyhadz.com/blog/python-check-if-string-contains-only-letters-and-spaces)
             if not all(x.isalpha() or x.isspace() for x in item):
                 print('Invalid Entry! Please enter only letters, like: eggs\n')
                 continue
@@ -33,7 +35,9 @@ def add_item():
                     time.sleep(2.5)
                 else:
                     print(f"{item.capitalize()} is already in the shopping list")
-            user_input = None 
+            user_input = None
+            # While loop yes or no from:
+            # (https://tutorial.eyehunts.com/python/while-loop-yes-or-no-python-example-code/)
             while user_input not in ("y", "n"):
                 user_input = input("""\nWould you like to add another item?\n
 Type 'y' to add or 'n' to back to the main menu:\n""")
