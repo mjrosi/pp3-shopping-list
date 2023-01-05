@@ -64,6 +64,7 @@ The application user can creat a shopping list by adding item to the list and/or
 - Shows the main menu with 7 options for the user to choose.
 - Prompts a user to input a number between 1 to 7.
 - The program validates the user entry. If the entry is not a number between 1 to 7, raise an error and asks the user to try again.
+
 ![Start screen](/assets/screenshots/Screenshot_shoppinglist_app.jpg)
 
 ### Add Items Input
@@ -106,12 +107,12 @@ The application user can creat a shopping list by adding item to the list and/or
 ![Check Items](/assets/screenshots/Screenshot_check_item.png)
 
 ### How many items on shopping list
-- By choosing 5, the program shows the numbers of the items in the shopping list.
+- By choosing 5, the program displays the numbers of the items in the shopping list.
 
 ![Number of Items](/assets/screenshots/Screenshot_number_of_items.png)
 
 ### Clear shopping list
-- By choosing 6, the program clears the entire items in the shopping list.
+- By choosing 6, the program clears the entire items in the shopping list and the Google Sheets.
 
 ![Clear the List](/assets/screenshots/Screenshot_clear_list.png)
 
@@ -124,7 +125,15 @@ The application user can creat a shopping list by adding item to the list and/or
 
 ### PEP8 validation
 The code is checked in [pep8](https://pep8ci.herokuapp.com/).
-No error has found.
+Results:
+24: E501 line too long (83 > 79 characters)
+34: E501 line too long (88 > 79 characters)
+37: E501 line too long (81 > 79 characters)
+118: E501 line too long (80 > 79 characters)
+122: E501 line too long (98 > 79 characters)
+135: E501 line too long (84 > 79 characters)
+
+These errors have no effect on the program performance.
 
 ## Deployment
 - To include the details on the project dependencies, the requirements.txt file is updated by entering this command in the terminal: `pip3 freeze > requirements.txt`

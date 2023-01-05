@@ -12,16 +12,16 @@ import time  # for importing sys.exit() function.
 # Adds an item to the shopping list
 def add_item():
     """
-    Get item input from the user to add to the shopping list.
-    Run a while loop to collect a valid input from the user
+    Gets input from the user to add item to the shopping list.
+    Runs a while loop to collect a valid input from the user
     via the terminal, which must be a string.
     The loop will repeatedly request input item, until it stop by user
-    by inserting q.
+    by inserting 'n'.
     """
     stop = False
     while not stop:
         while True:
-            item = input("Enter the item you wish to add to the shopping list: \n")
+            item = input("\nEnter the item you wish to add to the shopping list: \n")
             # Check if string contains only Letters and Spaces from:
             # https://bobbyhadz.com/blog/python-check-if-string-contains-only-letters-and-spaces)
             if not all(x.isalpha() or x.isspace() for x in item):
@@ -48,17 +48,17 @@ Type 'y' to add or 'n' to back to the main menu:\n""")
                 elif user_input == 'y':
                     stop = False
                 else:
-                    print("Invalid input! Please try again.\n")
+                    print("Invalid input! Please try again by entering 'y' or 'n'.\n")
 
 
 # Displays all items on the shopping list
 def display_list():
     """
-    Displays added items in the shopping list.
-    Runs an if condition which if the list empty shows the the shopping list is
+    Displays added items in the shopping list and the Google Sheets.
+    If the list empty shows the the shopping list is
     empty and asks user to add items by calling the function add_item().
-    If the list is not empty display the shopping list and calling
-    the main function to give the user other option to select.
+    If the list is not empty it displays the shopping list and calling
+    the main function.
     """
     if len(shopping_list) == 0:
         print("The shopping list is empty.\n")
@@ -81,9 +81,9 @@ the shopping list?\nType 'y' for to add or 'n' to not to add:\n""")
 # Remove an item from the shopping list
 def remove_item():
     """
-    Removes item from the shopping list by requesting
+    Removes item from the shopping list and the Google Sheets by requesting
     the user to enter the item name.
-    If the item is not in the shopping list raise an error
+    If the item is not in the shopping list it raises an error
     and asks the user to try again.
     """
     while True:
@@ -111,7 +111,7 @@ def check_item():
     """
     Requests user to enter an item to check if the item
     is in the shopping list.
-    If user enters an item which is not in the list, asks
+    If user enters an item which is not in the list, it will ask
     if the user wants to add the item to the list.
     """
     while True:
@@ -211,6 +211,7 @@ from 1-7: """))
 
 
 if __name__ == "__main__":
+    # From: Code Institute Love Sandwiches project
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive.file",
